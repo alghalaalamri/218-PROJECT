@@ -28,4 +28,16 @@ def load_network():
             time = float(row["travel_time_hours"])
             cost = float(row["transport_cost"])
 
+            # Create a list of connections for each location.
+            if start not in graph:
+                graph[start] = []
+
+            # Store the route and its details.
+            graph[start].append({
+                "destination": destination,
+                "transport": transport,
+                "time": time,
+                "cost": cost
+            })
+
     return graph
