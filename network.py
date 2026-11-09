@@ -19,6 +19,13 @@ def load_network():
 
         # Go through each transport route in the CSV.
         for row in reader:
-            print(row)
+            # Extract the details of each transport connection.
+            start = row["from_location"]
+            destination = row["to_location"]
+            transport = row["transport_type"]
+
+            # Convert travel time and cost from text into numbers.
+            time = float(row["travel_time_hours"])
+            cost = float(row["transport_cost"])
 
     return graph
