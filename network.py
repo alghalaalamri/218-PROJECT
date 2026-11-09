@@ -5,10 +5,12 @@ and prepare it for Dijkstra and A* search.
 """
 import csv
 
+
 def load_network():
-      """
+    """
     Creates a graph to store locations and their transport routes.
     The graph will be used by Dijkstra and A* to find the best route.
     """
+    file_path = "data/routes.csv"
     graph = {}
     return graph
