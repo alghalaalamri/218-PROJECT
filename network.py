@@ -17,4 +17,8 @@ def load_network():
     with open(file_path, "r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
+        # Go through each transport route in the CSV.
+        for row in reader:
+            print(row)
+
     return graph
