@@ -1,1 +1,13 @@
-from_location,to_location,transport_type,travel_time_hours,transport_cost  
+from_location,to_location,transport_type,travel_time_hours,transport_cost
+Dubai,Abu Dhabi,road,2,100
+Dubai,Riyadh,air,3,900
+Dubai,Amman,air,4,1200
+Abu Dhabi,Riyadh,road,10,400
+Riyadh,Jeddah,road,9,350
+Riyadh,Amman,air,3,700
+Jeddah,Aqaba,sea,12,500
+Jeddah,Al Arish,sea,18,650
+Aqaba,Amman,road,4,180
+Aqaba,Al Arish,sea,10,450
+Amman,Al Arish,road,8,300
+Al Arish,Gaza,road,3,150
