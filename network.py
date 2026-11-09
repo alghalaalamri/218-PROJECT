@@ -5,8 +5,6 @@ and prepare it for Dijkstra and A* search.
 """
 import csv
 
-
-
 def load_network():
     """
     Creates a graph to store locations and their transport routes.
