@@ -7,8 +7,9 @@ import csv
 
 def load_network():
     """
-    Creates a graph to store locations and their transport routes.
-    The graph will be used by Dijkstra and A* to find the best route.
+    Loads transport routes from the CSV file into a graph.
+    Each connection is bidirectional and stores its transport
+    type, travel time, and cost for Dijkstra and A*.
     """
     file_path = "data/routes.csv"
     graph = {}
@@ -28,13 +29,24 @@ def load_network():
             time = float(row["travel_time_hours"])
             cost = float(row["transport_cost"])
 
-            # Create a list of connections for each location.
+            # Make sure both locations exist in the graph.
             if start not in graph:
                 graph[start] = []
 
-            # Store the route and its details.
+            if destination not in graph:
+                graph[destination] = []
+
+            # Add the forward connection.
             graph[start].append({
                 "destination": destination,
+                "transport": transport,
+                "time": time,
+                "cost": cost
+            })
+
+            # Add the reverse connection with the same values.
+            graph[destination].append({
+                "destination": start,
                 "transport": transport,
                 "time": time,
                 "cost": cost
