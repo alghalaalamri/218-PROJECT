@@ -13,8 +13,8 @@ def load_network():
     file_path = "data/routes.csv"
     graph = {}
 
-    # Open the CSV file so we can read the transport routes.
+    # Open the CSV file and prepare its rows for reading.
     with open(file_path, "r", newline="", encoding="utf-8") as file:
-        pass
+        reader = csv.DictReader(file)
 
     return graph
