@@ -1,4 +1,3 @@
-
 """Dijkstra's shortest-path algorithm for the Humanitarian Route Planner."""
 
 import heapq
