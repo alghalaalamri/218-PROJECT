@@ -18,7 +18,9 @@ Project under development.
 
 
 ----------------------
-## Network and Dataset
+## Network and Dataset Guide
+**For team members working on Dijkstra, A*, evaluation, and the user interface:**
+This section explains how to load the transport network, access its connections, and retrieve travel time and cost values. Please use the documented graph structure when integrating your components.
 
 The transport network is stored in `data/routes.csv` and loaded using
 the `load_network()` function in `network.py`.
