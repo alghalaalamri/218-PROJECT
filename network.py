@@ -3,7 +3,9 @@
 This module will load our simulated route dataset
 and prepare it for Dijkstra and A* search.
 """
+
 import csv
+from pathlib import Path
 
 def load_network():
     """
@@ -11,7 +13,9 @@ def load_network():
     Each connection is bidirectional and stores its transport
     type, travel time, and cost for Dijkstra and A*.
     """
-    file_path = "data/routes.csv"
+
+    # Find the dataset relative to this Python file.
+    file_path = Path(__file__).resolve().parent / "data" / "routes.csv"
     graph = {}
 
     # Open the CSV file and prepare its rows for reading.
