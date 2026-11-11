@@ -62,3 +62,22 @@ visited=set()
                 raise ValueError("Negative route weights are not supported.")
             if neighbor in visited:
                 continue
+ new_g=current_g+edge_weight
+            if new_g<g_score[neighbor]:
+                g_score[neighbor]=new_g
+                previous[neighbor]=current_node
+                neighbor_h=h(neighbor)
+                heapq.heappush(
+                    priority_queue,
+                    (new_g+neighbor_h,neighbor_h,neighbor,new_g),
+                )
+    if goal not in visited:
+        return [],float("inf"),nodes_explored
+    path=[]
+    current_node=goal
+    while current_node!=start:
+        path.append(current_node)
+        current_node=previous[current_node]
+    path.append(start)
+    path.reverse()
+    return path,g_score[goal],nodes_explored
