@@ -30,20 +30,19 @@ def heuristic_scale(graph,weight):
             if best is None or per_km<best:
                 best=per_km
     return best 
-def astar_search(graph, start, goal, weight="time"):
-    if weight not in ("time", "cost"):
+def astar_search(graph,start,goal,weight="time"):
+    if weight not in ("time","cost"):
         raise ValueError("Weight must be 'time' or 'cost'.")
     if start not in graph or goal not in graph:
-        return [], float("inf"), 0
-    scale = heuristic_scale(graph, weight)
-
+        return[],float("inf"),0
+    scale=heuristic_scale(graph,weight)
     def h(node):
         if scale is None or node not in COORDINATES or goal not in COORDINATES:
             return 0.0
-        return haversine_km(node, goal) * scale
-    start_h = h(start)
-    priority_queue = [(start_h, start_h, start, 0)]
-    g_score = {node: float("inf") for node in graph}
-    g_score[start] = 0
-    previous = {}
+        return haversine_km(node,goal)*scale
+    start_h=h(start)
+    priority_queue=[(start_h,start_h,start,0)]
+    g_score={node:float("inf") for node in graph}
+    g_score[start]=0
+    previous={}
 
