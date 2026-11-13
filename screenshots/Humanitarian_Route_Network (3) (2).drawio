@@ -1,0 +1,128 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="network" name="Humanitarian Route Network">
+    <mxGraphModel dx="1580" dy="937" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=30;fontStyle=1;labelBorderColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="HUMANITARIAN ROUTE NETWORK" vertex="1">
+          <mxGeometry height="65" width="511.75" x="568.37" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Dubai" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Dubai" vertex="1">
+          <mxGeometry height="90" width="130" x="171" y="283" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Abu_Dhabi" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Abu Dhabi" vertex="1">
+          <mxGeometry height="90" width="130" x="171" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Riyadh" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Riyadh" vertex="1">
+          <mxGeometry height="90" width="130" x="436" y="283" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Jeddah" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Jeddah" vertex="1">
+          <mxGeometry height="90" width="130" x="436" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Amman" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Amman" vertex="1">
+          <mxGeometry height="90" width="130" x="706" y="283" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Aqaba" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Aqaba" vertex="1">
+          <mxGeometry height="90" width="130" x="706" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Al_Arish" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Al Arish" vertex="1">
+          <mxGeometry height="90" width="130" x="991" y="283" as="geometry" />
+        </mxCell>
+        <mxCell id="node_Gaza" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2.5;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#16345B;align=center;verticalAlign=middle;" value="Gaza" vertex="1">
+          <mxGeometry height="90" width="130" x="991" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="route_1" edge="1" parent="1" source="node_Dubai" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Abu_Dhabi" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_2" edge="1" parent="1" source="node_Dubai" style="edgeStyle=none;html=1;strokeColor=#1676DC;strokeWidth=3;dashed=1;dashPattern=8 6;endArrow=none;startArrow=none;rounded=1;" target="node_Riyadh" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_3" edge="1" parent="1" source="node_Dubai" style="edgeStyle=none;html=1;strokeColor=#1676DC;strokeWidth=3;dashed=1;dashPattern=8 6;endArrow=none;startArrow=none;rounded=1;" target="node_Amman" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="246" y="223" />
+              <mxPoint x="771" y="223" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="route_4" edge="1" parent="1" source="node_Abu_Dhabi" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Riyadh" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_5" edge="1" parent="1" source="node_Riyadh" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Jeddah" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_6" edge="1" parent="1" source="node_Riyadh" style="edgeStyle=none;html=1;strokeColor=#1676DC;strokeWidth=3;dashed=1;dashPattern=8 6;endArrow=none;startArrow=none;rounded=1;" target="node_Amman" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_7" edge="1" parent="1" source="node_Jeddah" style="edgeStyle=none;html=1;strokeColor=#8A4FC0;strokeWidth=3;dashed=1;dashPattern=2 5;endArrow=none;startArrow=none;rounded=1;" target="node_Aqaba" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_9" edge="1" parent="1" source="node_Aqaba" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Amman" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_10" edge="1" parent="1" source="node_Aqaba" style="edgeStyle=none;html=1;strokeColor=#8A4FC0;strokeWidth=3;dashed=1;dashPattern=2 5;endArrow=none;startArrow=none;rounded=1;" target="node_Al_Arish" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="906" y="463" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="route_11" edge="1" parent="1" source="node_Amman" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Al_Arish" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="route_12" edge="1" parent="1" source="node_Al_Arish" style="edgeStyle=none;html=1;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;rounded=0;" target="node_Gaza" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legendpanel" parent="1" style="rounded=1;arcSize=12;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1.5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="371" width="325" x="1228" y="109" as="geometry" />
+        </mxCell>
+        <mxCell id="legendtitle" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#16345B;" value="Key" vertex="1">
+          <mxGeometry height="45" width="240" x="1258" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="legendline0" edge="1" parent="1" style="edgeStyle=none;strokeColor=#248548;strokeWidth=3;endArrow=none;startArrow=none;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1263" y="204" as="sourcePoint" />
+            <mxPoint x="1338" y="204" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legendtext0" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontColor=#26364D;" value="Road" vertex="1">
+          <mxGeometry height="44" width="140" x="1358" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="legendline1" edge="1" parent="1" style="edgeStyle=none;strokeColor=#1676DC;strokeWidth=3;endArrow=none;startArrow=none;dashed=1;dashPattern=8 6;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1263" y="279" as="sourcePoint" />
+            <mxPoint x="1338" y="279" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legendtext1" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontColor=#26364D;" value="Air" vertex="1">
+          <mxGeometry height="44" width="140" x="1358" y="257" as="geometry" />
+        </mxCell>
+        <mxCell id="legendline2" edge="1" parent="1" style="edgeStyle=none;strokeColor=#8A4FC0;strokeWidth=3;endArrow=none;startArrow=none;dashed=1;dashPattern=2 5;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1263" y="354" as="sourcePoint" />
+            <mxPoint x="1338" y="354" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legendtext2" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontColor=#26364D;" value="Sea" vertex="1">
+          <mxGeometry height="44" width="140" x="1358" y="332" as="geometry" />
+        </mxCell>
+        <mxCell id="nodelegend" parent="1" style="ellipse;fillColor=#DCEBFA;strokeColor=#173B70;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="1272" y="416" as="geometry" />
+        </mxCell>
+        <mxCell id="nodetext" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontColor=#26364D;" value="Location (node)" vertex="1">
+          <mxGeometry height="42" width="180" x="1358" y="412" as="geometry" />
+        </mxCell>
+        <mxCell id="H6PcuJ5t_DumWuzIHXp--2" edge="1" parent="1" source="node_Jeddah" style="edgeStyle=none;html=1;strokeColor=#8A4FC0;strokeWidth=3;dashed=1;dashPattern=2 5;endArrow=none;startArrow=none;rounded=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="node_Al_Arish" value="">
+          <mxGeometry relative="1" x="0.0497" as="geometry">
+            <Array as="points" />
+            <mxPoint x="568.5" y="554" as="sourcePoint" />
+            <mxPoint x="773.5" y="371" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H6PcuJ5t_DumWuzIHXp--3" parent="1" style="text;whiteSpace=wrap;html=1;fontSize=14;" value="&lt;code&gt;Simulated Transport Network | 8 Locations | 12 Bidirectional Routes&lt;/code&gt;" vertex="1">
+          <mxGeometry height="36" width="528.5" x="568.37" y="119" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
