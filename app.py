@@ -2,7 +2,7 @@ import streamlit as st
 import copy
 from network import load_network
 
-# Import team search algorithms if available
+# Import team search algorithms
 try:
     from dijkstra import dijkstra_search
 except ImportError:
@@ -13,33 +13,30 @@ try:
 except ImportError:
     astar_search = None
 
-st.set_page_config(page_title="Humanitarian Route Planner", layout="wide")
+st.set_page_config(page_title="Humanitarian Route Planner", page_icon="🧭", layout="wide")
 
 st.title("Dubai Humanitarian Route Planner")
-st.markdown("Route optimization and disruption simulation from Dubai to regional crisis destinations[cite: 1, 2].")
+st.write("Interactive pathfinding and infrastructure disruption simulator for emergency relief logistics[cite: 1, 2].")
 
 # Load graph network
 graph = load_network()
 locations = list(graph.keys())
 
-# Sidebar configuration
-st.sidebar.header("Controls")
+# Sidebar Configuration
+st.sidebar.header("Route Parameters")
 
 start_node = "Dubai"
-goal_node = st.sidebar.selectbox("Crisis Destination", [loc for loc in locations if loc != start_node])
+goal_node = st.sidebar.selectbox("Select Crisis Destination", [loc for loc in locations if loc != start_node])
 
-weight_metric = st.sidebar.selectbox("Optimization Metric", ["time", "cost"])
-if weight_metric == "time":
-    metric_label = "Travel Time (hours)"
-else:
-    metric_label = "Transport Cost Units"
+weight_metric = st.sidebar.selectbox("Optimization Goal", ["time", "cost"])
+metric_label = "Travel Time (Hours)" if weight_metric == "time" else "Transport Cost (Units)"
 
-algorithm_choice = st.sidebar.radio("Algorithm", ["Dijkstra's Algorithm", "A* Search", "Compare Both"])
+algorithm_choice = st.sidebar.selectbox("Algorithm Selection", ["Compare Both", "Dijkstra's Algorithm", "A* Search"])
 
-st.sidebar.subheader("Disruption Simulator")
-st.sidebar.markdown("Select routes to block:")
+st.sidebar.markdown("---")
+st.sidebar.header("Disruption Controls")
 
-# Extract unique route edges for blocking
+# Extract unique edges for the multi-select box
 all_edges = []
 for loc, routes in graph.items():
     for r in routes:
@@ -48,7 +45,7 @@ for loc, routes in graph.items():
             all_edges.append(edge)
 
 blocked_edges = st.sidebar.multiselect(
-    "Active Blockages", 
+    "Disable Routes", 
     [f"{edge[0]} <-> {edge[1]}" for edge in all_edges]
 )
 
@@ -64,45 +61,51 @@ def get_disrupted_graph(original_graph, blocked_list):
 
 active_graph = get_disrupted_graph(graph, blocked_edges)
 
-# Run calculation
-if st.button("Calculate Route"):
-    st.markdown("---")
-    st.subheader("Results")
-    
+# Top Metrics Bar
+col_a, col_b, col_c = st.columns(3)
+col_a.metric("Origin Hub", start_node)
+col_b.metric("Selected Destination", goal_node)
+col_c.metric("Active Disruptions", len(blocked_edges))
+
+st.markdown("---")
+
+# Compute Route Button
+if st.button("Compute Optimal Route", type="primary"):
     col1, col2 = st.columns(2)
     
     def run_algorithm(name, func):
         if func is None:
-            st.warning(f"{name} module not loaded yet.")
+            st.warning(f"Module for {name} is not available yet.")
             return
             
         path, total_weight, nodes_explored = func(active_graph, start_node, goal_node, weight_metric)
         
         if not path or total_weight == float("inf"):
-            st.error(f"{name}: No path available to {goal_node}.")
+            st.error(f"{name}: Destination unreachable.")
         else:
-            st.success(f"{name} Complete")
-            st.write(f"**Path:** {' -> '.join(path)}")
-            st.metric(label=metric_label, value=f"{total_weight:.1f}")
-            st.metric(label="Nodes Explored", value=nodes_explored)
+            st.success(f"{name} Completed")
+            st.write(f"**Route Path:** {' ➔ '.join(path)}")
+            
+            m1, m2 = st.columns(2)
+            m1.metric(metric_label, f"{total_weight:.1f}")
+            m2.metric("Nodes Explored", nodes_explored)
 
     with col1:
-        st.markdown(f"### Target: {goal_node}")
-        if blocked_edges:
-            st.warning(f"{len(blocked_edges)} route(s) blocked.")
+        st.subheader("Dijkstra's Results")
+        if algorithm_choice in ["Compare Both", "Dijkstra's Algorithm"]:
+            run_algorithm("Dijkstra", dijkstra_search)
         else:
-            st.info("No active disruptions.")
-            
-        if algorithm_choice in ["Dijkstra's Algorithm", "Compare Both"]:
-            run_algorithm("Dijkstra's Algorithm", dijkstra_search)
-            
-    with col2:
-        st.markdown("### Comparison")
-        if algorithm_choice in ["A* Search", "Compare Both"]:
-            run_algorithm("A* Search", astar_search)
-        elif algorithm_choice == "Dijkstra's Algorithm":
-            st.info("Select 'Compare Both' or 'A* Search' to view side-by-side metrics.")
+            st.info("Dijkstra execution skipped.")
 
-    st.markdown("---")
-    with st.expander("View Graph JSON"):
-        st.json(active_graph)
+    with col2:
+        st.subheader("A* Search Results")
+        if algorithm_choice in ["Compare Both", "A* Search"]:
+            run_algorithm("A*", astar_search)
+        else:
+            st.info("A* execution skipped.")
+
+st.markdown("---")
+
+# Clean hidden expander for developer view
+with st.expander("Developer Debug: View Network Adjacency JSON"):
+    st.json(active_graph)
