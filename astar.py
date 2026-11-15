@@ -45,7 +45,7 @@ def astar_search(graph,start,goal,weight="time"):
     g_score={node:float("inf") for node in graph}
     g_score[start]=0
     previous={}
-visited=set()
+    visited=set()
     nodes_explored=0
     while priority_queue:
         _,_,current_node,current_g=heapq.heappop(priority_queue)
@@ -62,7 +62,7 @@ visited=set()
                 raise ValueError("Negative route weights are not supported.")
             if neighbor in visited:
                 continue
- new_g=current_g+edge_weight
+            new_g=current_g+edge_weight
             if new_g<g_score[neighbor]:
                 g_score[neighbor]=new_g
                 previous[neighbor]=current_node
