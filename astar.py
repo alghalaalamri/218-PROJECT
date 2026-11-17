@@ -1,5 +1,12 @@
+"""
+Heuristic: h(n) = straight line (haversine) km from n to the goal, multiplied by the
+smallest weight-per-km found on any edge. This never overestimates the true remaining
+weight (admissible) and satisfies h(u) <= w(u, v) + h(v) (consistent), so A* returns
+an optimal route and each location only needs to be explored once.
+"""
 import heapq
 import math
+# These are the approximate (latitude, longitude) of each location used by the heuristic.
 COORDINATES = {
     "Dubai":(25.2048, 55.2708),
     "Abu Dhabi":(24.4539,54.3773),
@@ -10,6 +17,11 @@ COORDINATES = {
     "Al Arish":(31.1316,33.7984),
     "Gaza":(31.5017,34.4668),
 }
+VALID_WEIGHTS=("time","cost")
+def register_coordinates(coords):
+    """Adds {name: (lat, lon)} entries so the heuristic works on a new dataset. Without coordinates, A* falls back
+    to h = 0."""
+    COORDINATES.update(coords)
 def haversine_km(a, b):
     lat1,lon1=map(math.radians,COORDINATES[a])
     lat2,lon2=map(math.radians,COORDINATES[b])
@@ -31,7 +43,7 @@ def heuristic_scale(graph,weight):
                 best=per_km
     return best 
 def astar_search(graph,start,goal,weight="time"):
-    if weight not in ("time","cost"):
+    if weight not in VALID_WEIGHTS:
         raise ValueError("Weight must be 'time' or 'cost'.")
     if start not in graph or goal not in graph:
         return[],float("inf"),0
@@ -63,7 +75,7 @@ def astar_search(graph,start,goal,weight="time"):
             if neighbor in visited:
                 continue
             new_g=current_g+edge_weight
-            if new_g<g_score[neighbor]:
+            if new_g<g_score[neighbor]: # if the better route is found
                 g_score[neighbor]=new_g
                 previous[neighbor]=current_node
                 neighbor_h=h(neighbor)
@@ -73,6 +85,7 @@ def astar_search(graph,start,goal,weight="time"):
                 )
     if goal not in visited:
         return [],float("inf"),nodes_explored
+    # Rebuilds the route by walking back through predecessors.
     path=[]
     current_node=goal
     while current_node!=start:
