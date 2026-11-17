@@ -40,7 +40,7 @@ COORDINATES = {
     "PSD_PORT": (19.590, 37.220),
     "PZU": (19.433, 37.234),
 }
-VALID_WEIGHTS=("time","cost")
+VALID_WEIGHTS = ("time", "cost", "risk")
 def register_coordinates(coords):
     """Adds {name: (lat, lon)} entries so the heuristic works on a new dataset. Without coordinates, A* falls back
     to h = 0."""
@@ -104,11 +104,11 @@ def astar_search(graph,start,goal,weight="time"):
     if goal not in visited:
         return [],float("inf"),nodes_explored
     # Rebuilds the route by walking back through predecessors.
-    path=[]
-    current_node=goal
-    while current_node!=start:
+    path = []
+    current_node = goal
+    while current_node != start:
         path.append(current_node)
-        current_node=previous[current_node]
+        current_node = previous[current_node]
     path.append(start)
     path.reverse()
-    return path,g_score[goal],nodes_explored
+    return path, g_score[goal], nodes_explored
