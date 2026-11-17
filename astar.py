@@ -67,7 +67,7 @@ def heuristic_scale(graph,weight):
     return min(ratios) if ratios else None
 def astar_search(graph,start,goal,weight="time"):
     if weight not in VALID_WEIGHTS:
-        raise ValueError("Weight must be 'time' or 'cost'.")
+        raise ValueError("Weight must be 'time' or 'cost' or 'risk'.")
     if start not in graph or goal not in graph:
         return[],float("inf"),0
     scale=heuristic_scale(graph,weight)
@@ -76,7 +76,7 @@ def astar_search(graph,start,goal,weight="time"):
             return 0.0
         return haversine_km(node,goal)*scale
     queue = [(h(start), h(start), start, 0.0)]
-    g_score = {node: float("inf") for node in graph}.
+    g_score = {node: float("inf") for node in graph}
     g_score[start] = 0.0
     previous, visited, nodes_explored = {}, set(), 0
     while queue:
@@ -100,7 +100,6 @@ def astar_search(graph,start,goal,weight="time"):
                 previous[neighbor] = current
                 nh = h(neighbor)
                 heapq.heappush(queue, (new_g + nh, nh, neighbor, new_g))
-                )
     if goal not in visited:
         return [],float("inf"),nodes_explored
     # Rebuilds the route by walking back through predecessors.
