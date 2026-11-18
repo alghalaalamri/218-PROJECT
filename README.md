@@ -169,12 +169,9 @@ The A* implementation should use and justify an appropriate heuristic that does 
 
 ### 5. Validation and Implementation Notes
 
-Both network loaders were tested in Google Colab.
+Both network loaders were tested in Google Colab by Alghala.
 
 - The simulated network loaded 8 locations and 24 directed connections.
 - The representative network loaded 23 locations and 36 directed connections.
 - Representative transport legs were checked for unique identifiers, valid destinations, and non-negative time, cost, and risk values.
 
-The representative dataset is provided for educational evaluation and should not be interpreted as verified live operational transport data.
-
-Pathfinding algorithms, route disruptions, evaluation, and the user interface are implemented separately.
