@@ -19,7 +19,7 @@ def apply_disruption_scenario(graph, scenario_id):
     if scenario_id == "S0":
         return disrupted
 
-    csv_path = Path(__file__).resolve().parent / "data" / "hrp_disruption_scenarios.csv"
+    csv_path = Path(__file__).resolve().parent.parent / "data" / "hrp_disruption_scenarios.csv"
     with open(csv_path, "r", newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
 
