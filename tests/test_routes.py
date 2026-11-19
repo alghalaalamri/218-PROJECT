@@ -7,7 +7,7 @@ import unittest
 from network import load_network
 from dijkstra import dijkstra_search
 from astar import astar_search, heuristic_scale, haversine_km
-from evaluation import create_disrupted_network
+from evaluation import create_disrupted_synthetic as create_disrupted_network
 
 
 class TestHumanitarianRouting(unittest.TestCase):
